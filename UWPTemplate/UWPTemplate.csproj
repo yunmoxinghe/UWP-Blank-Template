@@ -24,7 +24,6 @@
     <AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
     <PackageCertificateKeyFile>C:\Users\Furry_Xiyi\Documents\Furry_Moxiao.pfx</PackageCertificateKeyFile>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <ApplicationIcon>\UWPTemplate\UWPTemplate.Package\Assets\AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Uwp.Controls.SettingsControls" Version="8.2.251219" />

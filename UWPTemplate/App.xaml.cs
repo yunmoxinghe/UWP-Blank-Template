@@ -103,11 +103,15 @@ namespace UWPTemplate
                 var rootFrame = Window.Current.Content as Frame;
                 if (rootFrame == null) return;
 
+                // [修复]: 无论是 Mica 还是 Acrylic，统一在此处注册主题切换事件，确保标题栏能够同步刷新
+                if (rootFrame is FrameworkElement el)
+                {
+                    el.ActualThemeChanged -= OnActualThemeChanged;
+                    el.ActualThemeChanged += OnActualThemeChanged;
+                }
+
                 if (CurrentMaterial == BackgroundMaterial.Mica)
                 {
-                    if (rootFrame is FrameworkElement el)
-                        el.ActualThemeChanged -= OnActualThemeChanged;
-
                     rootFrame.Background = null;
                     Microsoft.UI.Xaml.Controls.BackdropMaterial.SetApplyToRootOrPageBackground(rootFrame, true);
                 }
@@ -132,12 +136,6 @@ namespace UWPTemplate
                         FallbackColor = fallbackColor,
                         TintLuminosityOpacity = isDark ? 0.96 : 0.85
                     };
-
-                    if (rootFrame is FrameworkElement el)
-                    {
-                        el.ActualThemeChanged -= OnActualThemeChanged;
-                        el.ActualThemeChanged += OnActualThemeChanged;
-                    }
                 }
             }
             catch (Exception ex)
@@ -148,6 +146,7 @@ namespace UWPTemplate
 
         public static void OnActualThemeChanged(FrameworkElement sender, object args)
         {
+            // 此处同步更新标题栏颜色
             CustomizeTitleBar();
 
             if (CurrentMaterial == BackgroundMaterial.Acrylic)
