@@ -117,15 +117,20 @@ namespace UWPTemplate
 
                     var isDark = GetIsDarkTheme();
                     var tintColor = isDark
-                        ? Color.FromArgb(255, 32, 32, 32)
-                        : Color.FromArgb(255, 243, 243, 243);
+                        ? Color.FromArgb(255, 44, 44, 44)
+                        : Color.FromArgb(255, 252, 252, 252);
+                    var fallbackColor = isDark
+                        ? Color.FromArgb(255, 44, 44, 44)
+                        : Color.FromArgb(255, 249, 249, 249);
+                    var tintOpacity = isDark ? 0.15 : 0.0;
 
-                    rootFrame.Background = new AcrylicBrush
+                    rootFrame.Background = new Microsoft.UI.Xaml.Media.AcrylicBrush
                     {
-                        BackgroundSource = AcrylicBackgroundSource.HostBackdrop,
+                        BackgroundSource = Microsoft.UI.Xaml.Media.AcrylicBackgroundSource.HostBackdrop,
                         TintColor = tintColor,
-                        TintOpacity = 0.8,
-                        FallbackColor = tintColor
+                        TintOpacity = tintOpacity,
+                        FallbackColor = fallbackColor,
+                        TintLuminosityOpacity = isDark ? 0.96 : 0.85
                     };
 
                     if (rootFrame is FrameworkElement el)
@@ -138,14 +143,6 @@ namespace UWPTemplate
             catch (Exception ex)
             {
                 Debug.WriteLine($"ApplyMaterial failed: {ex.Message}");
-
-                if (Window.Current.Content is Frame frame)
-                {
-                    var isDark = GetIsDarkTheme();
-                    frame.Background = new SolidColorBrush(isDark
-                        ? Color.FromArgb(255, 32, 32, 32)
-                        : Color.FromArgb(255, 243, 243, 243));
-                }
             }
         }
 
@@ -158,15 +155,17 @@ namespace UWPTemplate
                 var rootFrame = Window.Current.Content as Frame;
                 if (rootFrame == null) return;
 
-                var isDark = GetIsDarkTheme();
-                var tintColor = isDark
-                    ? Color.FromArgb(255, 32, 32, 32)
-                    : Color.FromArgb(255, 243, 243, 243);
-
-                if (rootFrame.Background is AcrylicBrush brush)
+                if (rootFrame.Background is Microsoft.UI.Xaml.Media.AcrylicBrush brush)
                 {
-                    brush.TintColor = tintColor;
-                    brush.FallbackColor = tintColor;
+                    var isDark = GetIsDarkTheme();
+                    brush.TintColor = isDark
+                        ? Color.FromArgb(255, 44, 44, 44)
+                        : Color.FromArgb(255, 252, 252, 252);
+                    brush.FallbackColor = isDark
+                        ? Color.FromArgb(255, 44, 44, 44)
+                        : Color.FromArgb(255, 249, 249, 249);
+                    brush.TintOpacity = isDark ? 0.15 : 0.0;
+                    brush.TintLuminosityOpacity = isDark ? 0.96 : 0.85;
                 }
             }
         }
