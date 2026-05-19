@@ -54,7 +54,7 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
     <EntryPointProjectUniqueName>..\UWPTemplate\UWPTemplate.csproj</EntryPointProjectUniqueName>
-    <PackageCertificateKeyFile>Furry_Moxiao.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>C:\Users\Furry_Xiyi\Documents\Furry_Moxiao.pfx</PackageCertificateKeyFile>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>

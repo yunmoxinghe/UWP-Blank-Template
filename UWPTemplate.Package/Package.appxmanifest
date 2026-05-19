@@ -10,7 +10,7 @@
   <Identity
     Name="28AE62C8.FurryXiyi.UWPTemplate"
     Publisher="CN=69199A48-A765-47C7-BD15-A581600DBBC9"
-    Version="4.0.0.0" />
+    Version="4.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="09ddef43-c36d-4a4a-aa39-e9baee53689d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
